@@ -15,7 +15,8 @@
 
 <script>
   import Todo from './Todo.vue';
-  import FormCreate from './FormCreate.vue'
+  import FormCreate from './FormCreate.vue';
+  import swal from 'sweetalert';
   export default {
     props: ['todos'],
     components: {
@@ -25,15 +26,30 @@
       deleteTodo(todo) {
         const todoIndex = this.todos.indexOf(todo);
         this.todos.splice(todoIndex, 1);
+        swal({
+          title: "Success",
+          text: "You have deleted todo",
+          icon: "success",
+        });
       },
 
       createTodo(todo) {
         this.todos.push(todo);
+        swal({
+          title: "Success",
+          text: "You have created todo",
+          icon: "success",
+        });
       },
 
       changeStatus(todo){
         const todoIndex = this.todos.indexOf(todo);
         this.todos[todoIndex].done = !this.todos[todoIndex].done;
+        swal({
+          title: "Success",
+          text: "You have changed status",
+          icon: "success",
+        });
       }
     }
   }
